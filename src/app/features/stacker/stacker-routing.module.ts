@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
+import { StackerComponent } from './components/stacker/stacker.component'
 
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () =>
-      import('./features/stacker/stacker.module').then((m) => m.StackerModule),
+    component: StackerComponent,
   },
 ]
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class StackerRoutingModule {}
