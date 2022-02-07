@@ -5,7 +5,10 @@
   </div>
   <div class="stackers__card__infos">
     <h3>{{stacker.firstname}} {{stacker.lastname}}</h3>
-    <p class="stackers__card__skills">{{stacker.skills}}</p>
+    <app-skill-tag
+      class="stackers__card__skills"
+      [skills]="stacker.skills">
+    </app-skill-tag>
   </div>
 
   <button class="stackers__card__btn">

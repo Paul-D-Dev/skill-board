@@ -6,6 +6,7 @@ $img-size-tablet: 75px;
   display: flex;
   flex-direction: column;
   padding: 20px;
+  height: 115px;
   max-width: 640px;
   background-color: aliceblue;
   border: 1px solid transparent;
@@ -41,6 +42,10 @@ $img-size-tablet: 75px;
     h3 {
       color: #4559FF;
     }
+
+    .stackers__card__skills {
+      margin-top: 2px;
+    }
   }
 
   .stackers__card__btn {
@@ -48,6 +53,7 @@ $img-size-tablet: 75px;
     max-height: 50px;
     padding-left: 20px;
     padding-right: 20px;
+    margin-top: auto;
     margin-left: auto;
     align-self: center;
     border: 0;
@@ -71,10 +77,15 @@ $img-size-tablet: 75px;
     margin-left: 20px !important;
   }
 
+  .stackers__card__skills {
+    margin-top: unset !important;
+  }
+
   .stackers__card__btn {
     height: 40px !important;
     padding-left: 25px !important;
     padding-right: 25px !important;
+    margin-top: unset !important;
   }
 }
 
