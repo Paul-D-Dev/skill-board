@@ -4,9 +4,7 @@ import { Observable } from 'rxjs'
 import { environment } from '../../../environments/environment'
 import { IStacker } from '../interfaces/stacker.interface'
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class StackerService {
   constructor(private http: HttpClient) {}
 
