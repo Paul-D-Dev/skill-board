@@ -1,0 +1,15 @@
+.skill-tag {
+  padding: 5px 15px;
+  border-radius: 50px;
+  background-color: #DDE1E8;
+
+  &:not(:last-of-type) {
+    margin-right: 7px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .skill-wrapper {
+    display: flex;
+  }
+}
