@@ -1,0 +1,14 @@
+<div *ngFor="let stacker of stackersList"
+      class="stackers__card">
+  <div class="img-wrapper">
+    <img [src]="stacker.photoUrl" alt="photo">
+  </div>
+  <div class="stackers__card__infos">
+    <h3>{{stacker.firstname}} {{stacker.lastname}}</h3>
+    <p class="stackers__card__skills">{{stacker.skills}}</p>
+  </div>
+
+  <button class="stackers__card__btn">
+    View profile
+  </button>
+</div>
