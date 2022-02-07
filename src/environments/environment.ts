@@ -5,6 +5,14 @@
 export const environment = {
   production: false,
   apiURL: 'http://localhost:3000',
+  firebaseConfig: {
+    apiKey: 'AIzaSyAjjPyB7rCuldOZ2r6fzz1KlRgTPf6rl94',
+    authDomain: 'skill-board-api.firebaseapp.com',
+    projectId: 'skill-board-api',
+    storageBucket: 'skill-board-api.appspot.com',
+    messagingSenderId: '365038795644',
+    appId: '1:365038795644:web:d1834244f07c0c7476c2f9',
+  },
 }
 
 /*
