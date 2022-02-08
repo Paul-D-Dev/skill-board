@@ -26,7 +26,7 @@ export class AuthService {
       .signInWithPopup(provider)
       .then(() => {
         console.log('Successfully logged in')
-        this.router.navigateByUrl('/')
+        this.router.navigateByUrl('/dashboard')
       })
       .catch((error) => console.error(error))
   }
