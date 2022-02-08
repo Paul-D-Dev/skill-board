@@ -1,12 +1,7 @@
-
-
-<div *ngIf="authService.user$ | async as user; else login">
-  <pre>{{user | json}}</pre>
-
-  <hr>
-  <button class="button" (click)="authService.signOut()">Sign Out</button>
+<div class="login__google img-wrapper btn"
+     (click)="authService.signInWithGoogle()">
+  <img
+    src="./assets/google_signin_buttons/web/1x/btn_google_signin_light_normal_web.png"
+    alt="Button google sign in">
 </div>
 
-<ng-template #login>
-  <button class="button" (click)="authService.signInWithGoogle()">Login with Google</button>
-</ng-template>
