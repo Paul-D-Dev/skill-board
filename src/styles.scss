@@ -10,11 +10,21 @@ body {
   background-color: #DDE1E8;
 }
 
-a, button {
+a, button, .btn {
   cursor: pointer;
+}
+
+a {
+  color: unset;
+  text-decoration: none;
 }
 
 img {
   height: 100%;
   width: 100%;
 }
+
+li {
+  list-style-type: none;
+}
+
