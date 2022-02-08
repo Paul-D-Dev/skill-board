@@ -4,7 +4,7 @@ import { AuthGuard } from './core/guards/auth.guard'
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'dashboard',
     canActivate: [AuthGuard],
     loadChildren: () =>
       import('./features/stacker/stacker.module').then((m) => m.StackerModule),
@@ -13,6 +13,11 @@ const routes: Routes = [
     path: 'login',
     loadChildren: () =>
       import('./features/auth/auth.module').then((m) => m.AuthModule),
+  },
+  {
+    path: '',
+    redirectTo: '/',
+    pathMatch: 'full',
   },
 ]
 
