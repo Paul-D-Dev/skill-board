@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser'
 
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
+import { AuthModule } from './features/auth/auth.module'
 import { AppFirebaseModule } from './shared/modules/app-firebase-module/app-firebase.module'
 
 @NgModule({
@@ -13,6 +14,7 @@ import { AppFirebaseModule } from './shared/modules/app-firebase-module/app-fire
     AppRoutingModule,
     HttpClientModule,
     AppFirebaseModule,
+    AuthModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
