@@ -1,7 +1,9 @@
 .skill-tag {
   padding: 5px 15px;
   border-radius: 50px;
-  background-color: #DDE1E8;
+  color: #4559FF;
+  background-color: RGBA(69, 89, 255, .2)
+;
 
   &:not(:last-of-type) {
     margin-right: 7px;

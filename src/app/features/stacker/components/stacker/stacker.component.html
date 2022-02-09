@@ -1,19 +1,28 @@
 <div class="stackers__container">
   <div *ngFor="let stacker of stackersList"
         class="stackers__card">
-    <div class="img-wrapper">
-      <img [src]="stacker.photoUrl" alt="photo">
-    </div>
-    <div class="stackers__card__infos">
-      <h3>{{stacker.firstname}} {{stacker.lastname | uppercase}}</h3>
-      <app-skill-tag
-        class="stackers__card__skills"
-        [skills]="stacker.skills">
-      </app-skill-tag>
+
+    <div class="stackers__card__header">
+      <div class="stackers__card__header__img">
+        <img [src]="stacker.photoUrl" alt="photo">
+      </div>
+      <div class="stackers__card__header__identity">
+        <h2>{{stacker.firstname}} {{stacker.lastname | uppercase}}</h2>
+        <span class="stackers__card__header__identity__location"> Montréal</span>
+        <!--Location -->
+
+      </div>
     </div>
 
-    <button class="stackers__card__btn">
-      View profile
-    </button>
+    <div class="stackers__card__body">
+      <h3>Developpeur Front end</h3>
+      <app-skill-tag
+        class="stackers__card__body__skills"
+        [skills]="stacker.skills">
+      </app-skill-tag>
+
+    </div>
   </div>
+
+
 </div>
