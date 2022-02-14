@@ -61,10 +61,37 @@ fdescribe('StackerComponent', () => {
       0,
       'Could not find stackers cards'
     )
+  })
 
-    expect(stackersCards[0].nativeElement.textContent).toContain(
-      'DAO',
-      'Not same lastname'
+  it("should display first stacker's information", () => {
+    component.stackersList = []
+    stackerService.getStackers.and.returnValue(of(stackers))
+    stackerService.getStackers().subscribe((res: IStacker[]) => {
+      component.stackersList = res
+    })
+
+    const stacker = component.stackersList[0]
+
+    fixture.detectChanges()
+    // Firstname + Lastname
+    const name: string[] = el
+      .query(By.css('.stackers__card__header__identity h2'))
+      .nativeElement.innerText.split(' ')
+    expect(name[0]).toEqual(stacker.firstname, 'Not same firstname')
+    expect(name[1]).toEqual(
+      stacker.lastname.toUpperCase(),
+      'Not same lastname & uppercase'
+    )
+
+    // PhotoUrl
+    const imgSrc: string = el.query(By.css('.stackers__card__header__img img'))
+      .nativeElement.src
+    expect(imgSrc).toEqual(
+      component.stackersList[0].photoUrl,
+      'Not same photoUrl'
     )
   })
+
+  // TODO render app-skill
+  // TODO ng for
 })
