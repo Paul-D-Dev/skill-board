@@ -36,40 +36,34 @@ fdescribe('StackerComponent', () => {
     })
   )
 
+  beforeEach(() => {
+    stackerService.getStackers.and.returnValue(of(stackers))
+    stackerService.getStackers().subscribe((res: IStacker[]) => {
+      component.stackersList = res
+    })
+  })
+
   it('should create', () => {
     expect(component).toBeTruthy()
   })
 
   it('should return a collection of stackers', () => {
-    component.stackersList = []
-    stackerService.getStackers.and.returnValue(of(stackers))
-    stackerService.getStackers().subscribe((res: IStacker[]) => {
-      component.stackersList = res
-    })
-
     expect(component.stackersList).toEqual(
       stackers,
       'stackersList is not as expected'
     )
   })
 
-  it('should display stackers cards', () => {
-    stackerService.getStackers.and.returnValue(of(stackers))
+  it('should create stackers" card with *ngFor', () => {
     fixture.detectChanges()
-    const stackersCards = el.queryAll(By.css('.stackers__card'))
-    expect(stackersCards.length).toBeGreaterThan(
-      0,
-      'Could not find stackers cards'
+    const stackersCard = el.queryAll(By.css('.stackers__card'))
+    expect(component.stackersList.length).toEqual(
+      stackersCard.length,
+      'do not render correct number of cards'
     )
   })
 
   it("should display first stacker's information", () => {
-    component.stackersList = []
-    stackerService.getStackers.and.returnValue(of(stackers))
-    stackerService.getStackers().subscribe((res: IStacker[]) => {
-      component.stackersList = res
-    })
-
     const stacker = component.stackersList[0]
 
     fixture.detectChanges()
@@ -93,5 +87,30 @@ fdescribe('StackerComponent', () => {
   })
 
   // TODO render app-skill
-  // TODO ng for
+  it('should display app-skill', () => {
+    fixture.detectChanges()
+    const appSkillComponents = el.queryAll(By.css('app-skill-tag'))
+    expect(appSkillComponents.length).toEqual(
+      component.stackersList.length,
+      'does not render app-skill-tag'
+    )
+
+    // test data input
+    for (let i = 0; i < component.stackersList.length; i++) {
+      expect(appSkillComponents[i].componentInstance.skillsProps).toEqual(
+        component.stackersList[i].skills
+      )
+    }
+  })
+
+  it('child app-skill-tag should receive as input skills', () => {
+    fixture.detectChanges()
+    const appSkillComponents = el.queryAll(By.css('app-skill-tag'))
+    for (let i = 0; i < component.stackersList.length; i++) {
+      expect(appSkillComponents[i].componentInstance.skillsProps).toEqual(
+        component.stackersList[i].skills,
+        'does not receive expected input'
+      )
+    }
+  })
 })
