@@ -8,14 +8,23 @@
       </div>
       <div class="stackers__card__header__identity">
         <h2>{{stacker.firstname}} {{stacker.lastname | uppercase}}</h2>
-        <span class="stackers__card__header__identity__location">Montréal</span>
-        <!--Location -->
+        <span class="stackers__card__header__identity__location">{{stacker.location}}</span>
 
       </div>
     </div>
 
     <div class="stackers__card__body">
-      <h3>Developpeur Front end</h3>
+      <div class="stackers__card__body__header">
+        <h3>{{stacker.job}}</h3>
+        <ng-container *ngIf="stacker.resume !== ''">
+          <a class="stackers__card__body__header__resume"
+             [href]="stacker.resume"
+             target="_blank">
+            Resume
+          </a>
+        </ng-container>
+      </div>
+
       <app-skill-tag
         class="stackers__card__body__skills"
         [skills]="stacker.skills">
