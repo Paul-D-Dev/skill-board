@@ -1,7 +1,9 @@
+@import 'src/variables.scss';
+
 .skill-tag {
   padding: 5px 15px;
   border-radius: 50px;
-  color: #4559FF;
+  color: $primary-color;
   background-color: RGBA(69, 89, 255, .2)
 ;
 
