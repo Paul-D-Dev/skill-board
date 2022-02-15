@@ -2,14 +2,14 @@ import { DebugElement } from '@angular/core'
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
 import { of } from 'rxjs'
-import { STACKERS } from '../../../../../../mock-test/db-data-stackers'
+import { STACKERS } from '../../../../../../mock-test/db-data-stackers.mock'
 import { IStacker } from '../../../../shared/interfaces/stacker.interface'
 import { StackerService } from '../../../../shared/services/stacker.service'
 import { StackerModule } from '../../stacker.module'
 
 import { StackerComponent } from './stacker.component'
 
-fdescribe('StackerComponent', () => {
+describe('StackerComponent', () => {
   let component: StackerComponent
   let fixture: ComponentFixture<StackerComponent>
   let stackerService: any
@@ -86,7 +86,6 @@ fdescribe('StackerComponent', () => {
     )
   })
 
-  // TODO render app-skill
   it('should display app-skill', () => {
     fixture.detectChanges()
     const appSkillComponents = el.queryAll(By.css('app-skill-tag'))
@@ -95,7 +94,6 @@ fdescribe('StackerComponent', () => {
       'does not render app-skill-tag'
     )
 
-    // test data input
     for (let i = 0; i < component.stackersList.length; i++) {
       expect(appSkillComponents[i].componentInstance.skillsProps).toEqual(
         component.stackersList[i].skills

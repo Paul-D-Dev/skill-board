@@ -5,7 +5,7 @@ import { STACKERS } from '../../../../../mock-test/db-data-stackers.mock'
 
 import { SkillTagComponent } from './skill-tag.component'
 
-fdescribe('SkillTagComponent', () => {
+describe('SkillTagComponent', () => {
   let component: SkillTagComponent
   let fixture: ComponentFixture<SkillTagComponent>
   const stackers = STACKERS

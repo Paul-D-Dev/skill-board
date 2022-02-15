@@ -3,7 +3,7 @@ import {
   HttpTestingController,
 } from '@angular/common/http/testing'
 import { TestBed } from '@angular/core/testing'
-import { STACKERS } from '../../../../mock-test/db-data-stackers'
+import { STACKERS } from '../../../../mock-test/db-data-stackers.mock'
 import { environment } from '../../../environments/environment'
 import { IStacker } from '../interfaces/stacker.interface'
 
