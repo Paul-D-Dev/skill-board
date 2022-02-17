@@ -33,5 +33,13 @@
     </div>
   </div>
 
-
 </div>
+
+<aside class="stackers__filters" *ngIf="filterListSkills.length > 0">
+  <div *ngFor="let skill of filterListSkills">
+    <input type="checkbox" [name]="skill" id="" [value]="skill" (click)="setFilterSkills(skill)">
+    <label for="">{{skill}}</label>
+  </div>
+
+  <button type="reset" (click)="resetFilter()">Reset</button>
+</aside>
