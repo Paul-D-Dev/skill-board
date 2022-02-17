@@ -1,45 +1,77 @@
-<div class="stackers__container">
-  <div *ngFor="let stacker of stackersList"
-        class="stackers__card">
 
-    <div class="stackers__card__header">
-      <div class="stackers__card__header__img">
-        <img [src]="stacker.photoUrl" alt="photo">
-      </div>
-      <div class="stackers__card__header__identity">
-        <h2>{{stacker.firstname}} {{stacker.lastname | uppercase}}</h2>
-        <span class="stackers__card__header__identity__location">{{stacker.location}}</span>
+<div class="stackers__wrapper">
 
-      </div>
-    </div>
+  <aside class="stackers__filters" [ngClass]="isMobileView ? 'mobile' : ''" *ngIf="filterListSkills.length > 0">
+    <ng-container *ngIf="isMobileView; else view" >
+      <button [hidden]="!isHiddenModal">Filters</button>
 
-    <div class="stackers__card__body">
-      <div class="stackers__card__body__header">
-        <h3>{{stacker.job}}</h3>
-        <ng-container *ngIf="stacker.resume !== ''">
-          <a class="stackers__card__body__header__resume"
-             [href]="stacker.resume"
-             target="_blank">
-            Resume
-          </a>
-        </ng-container>
+    </ng-container>
+
+    <ng-template #view>
+      <div class="stackers__filters__header">
+        <h2>Filters</h2>
+        <button type="reset" (click)="resetFilter()">Reset</button>
       </div>
 
-      <app-skill-tag
-        class="stackers__card__body__skills"
-        [skills]="stacker.skills">
-      </app-skill-tag>
+      <div class="stackers__filters__stacks">
+        <h3>Stacks</h3>
+        <fieldset *ngFor="let skill of filterListSkills">
+          <input type="checkbox" [name]="skill" [id]="'skill_'+skill" [value]="skill" (click)="setFilterSkills(skill)">
+          <label [for]="skill">{{skill}}</label>
+        </fieldset>
+      </div>
+    </ng-template>
+  </aside>
 
+  <div class="stackers__filters__modal" *ngIf="isMobileView" [hidden]="isHiddenModal">
+    <section class="stackers__filters__stacks">
+      <h3>Stacks</h3>
+      <fieldset *ngFor="let skill of filterListSkills;">
+        <input type="checkbox" [name]="skill" [id]="'skill_'+skill" [value]="skill" (click)="setFilterSkills(skill)">
+        <label [for]="skill">{{skill}}</label>
+      </fieldset>
+    </section>
+    <div class="btn-wrapper">
+      <button>Reset filters</button>
+      <button>Apply filters</button>
     </div>
   </div>
+
+  <main class="stackers__container">
+    <section *ngFor="let stacker of stackersList"
+          class="stackers__card">
+
+      <div class="stackers__card__header">
+        <div class="stackers__card__header__img">
+          <img [src]="stacker.photoUrl" alt="photo">
+        </div>
+        <div class="stackers__card__header__identity">
+          <h2>{{stacker.firstname}} {{stacker.lastname | uppercase}}</h2>
+          <span class="stackers__card__header__identity__location">{{stacker.location}}</span>
+
+        </div>
+      </div>
+
+      <div class="stackers__card__body">
+        <div class="stackers__card__body__header">
+          <h3>{{stacker.job}}</h3>
+          <ng-container *ngIf="stacker.resume !== ''">
+            <a class="stackers__card__body__header__resume"
+               [href]="stacker.resume"
+               target="_blank">
+              Resume
+            </a>
+          </ng-container>
+        </div>
+
+        <app-skill-tag
+          class="stackers__card__body__skills"
+          [skills]="stacker.skills">
+        </app-skill-tag>
+
+      </div>
+    </section>
+
+  </main>
 
 </div>
-
-<aside class="stackers__filters" *ngIf="filterListSkills.length > 0">
-  <div *ngFor="let skill of filterListSkills">
-    <input type="checkbox" [name]="skill" id="" [value]="skill" (click)="setFilterSkills(skill)">
-    <label for="">{{skill}}</label>
-  </div>
-
-  <button type="reset" (click)="resetFilter()">Reset</button>
-</aside>

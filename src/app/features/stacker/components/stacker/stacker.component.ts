@@ -12,10 +12,13 @@ export class StackerComponent implements OnInit {
   stackersList: IStacker[] = []
   filterListSkills: string[] = []
   skillToFilter: string[] = []
+  isMobileView: boolean = false
+  isHiddenModal = false
   constructor(private stackerService: StackerService) {}
 
   ngOnInit(): void {
     this.getStacker()
+    this.isMobileView = this.onMobileView()
   }
 
   getStacker() {
@@ -64,5 +67,10 @@ export class StackerComponent implements OnInit {
     this.skillToFilter = []
     // Uncheck selected checkbox
     this.stackersList = this.initialStateStackers
+  }
+
+  onMobileView() {
+    const screenWidth = window.innerWidth
+    return screenWidth < 415
   }
 }
