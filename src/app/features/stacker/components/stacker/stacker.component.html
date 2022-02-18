@@ -1,9 +1,12 @@
-
 <div class="stackers__wrapper">
 
-  <aside class="stackers__filters" [ngClass]="isMobileView ? 'mobile' : ''" *ngIf="filterListSkills.length > 0">
+  <aside
+    class="stackers__filters"
+    [ngClass]="isMobileView ? 'mobile' : ''"
+    [hidden]="!isHiddenModal"
+    *ngIf="filterListSkills.length > 0">
     <ng-container *ngIf="isMobileView; else view" >
-      <button [hidden]="!isHiddenModal">Filters</button>
+      <button>Filters</button>
 
     </ng-container>
 
@@ -20,20 +23,37 @@
           <label [for]="skill">{{skill}}</label>
         </fieldset>
       </div>
+
     </ng-template>
   </aside>
 
   <div class="stackers__filters__modal" *ngIf="isMobileView" [hidden]="isHiddenModal">
-    <section class="stackers__filters__stacks">
-      <h3>Stacks</h3>
-      <fieldset *ngFor="let skill of filterListSkills;">
-        <input type="checkbox" [name]="skill" [id]="'skill_'+skill" [value]="skill" (click)="setFilterSkills(skill)">
-        <label [for]="skill">{{skill}}</label>
-      </fieldset>
-    </section>
-    <div class="btn-wrapper">
-      <button>Reset filters</button>
-      <button>Apply filters</button>
+    <div class="stackers__filters__modal__content">
+      <section class="stackers__filters__item">
+        <h3>Stacks</h3>
+        <fieldset *ngFor="let skill of filterListSkills;">
+          <input type="checkbox" [name]="skill" [id]="'skill_'+skill" [value]="skill" (click)="setFilterSkills(skill)">
+          <label [for]="skill">{{skill}}</label>
+        </fieldset>
+      </section>
+      <section class="stackers__filters__item">
+        <h3>Stacks</h3>
+        <fieldset *ngFor="let skill of filterListSkills;">
+          <input type="checkbox" [name]="skill" [id]="'skill_'+skill" [value]="skill" (click)="setFilterSkills(skill)">
+          <label [for]="skill">{{skill}}</label>
+        </fieldset>
+      </section>
+      <section class="stackers__filters__item">
+        <h3>Stacks</h3>
+        <fieldset *ngFor="let skill of filterListSkills;">
+          <input type="checkbox" [name]="skill" [id]="'skill_'+skill" [value]="skill" (click)="setFilterSkills(skill)">
+          <label [for]="skill">{{skill}}</label>
+        </fieldset>
+      </section>
+    </div>
+    <div class="stackers__filters__modal__btn__action btn-wrapper">
+      <button>Reset</button>
+      <button>Filter</button>
     </div>
   </div>
 
